@@ -11,14 +11,12 @@ let db;
 // Tell indexedDb to open (or create) whatever database you want to work with
 const request = indexedDB.open("budget", 1);
 
-// Set up your object store
-// Think of an object store as a table inside your database
+// Set up object store
 request.onupgradeneeded = ({ target }) => {
   let db = target.result;
   db.createObjectStore("pending", { autoIncrement: true });
 };
 
-// Leave this code as-is
 // If the request was successful it means the Internet is back up, so we can query the real database.
 request.onsuccess = ({ target }) => {
   db = target.result;
@@ -28,7 +26,7 @@ request.onsuccess = ({ target }) => {
   }
 };
 
-// Simple error handler. Leave as-is
+// Simple error handler.
 request.onerror = function(event) {
   console.log("Woops! " + event.target.errorCode);
 };
@@ -40,7 +38,7 @@ function saveRecord(record) {
   store.add(record);
 }
 
-// This function runs when we detect that the internet connection is working again. It sends a post request to the server with all the saved data so that the data can be synced with the server, and then it wipes out the existing indexedDb. You can keep as-is, unless you want to change the name of the fetch route.
+// This function runs when we detect that the internet connection is working again.
 function checkDatabase() {
   const transaction = db.transaction(["pending"], "readwrite");
   const store = transaction.objectStore("pending");
