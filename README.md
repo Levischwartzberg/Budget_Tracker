@@ -20,7 +20,7 @@ Run npm install to include to include the node packages specified in the package
 After installing and running with node server.js, kill the terminal running the server and continue to make changes in the browser window. Then restart the server and refresh. Notice that changes made while the server was down are cached and saved when the server refreshes.
 ## Usage
 A link to the projeect on heroku can be found here. 
-
+https://salty-escarpment-37106.herokuapp.com/
 ![Alt text](./images/preview.jpg?raw=true "Sample home page image")
 ## Credits
 This was heavily influenced by the PWA examples and provided source code.
